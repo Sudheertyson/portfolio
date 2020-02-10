@@ -225,33 +225,62 @@
 
 
 
-	if ($('.js-form').length) {
-		$('.js-form').each(function(){
-			$(this).validate({
-				errorClass: 'error',
-			    submitHandler: function(form){
-		        	$.ajax({
-			            type: "POST",
-			            url:"mail.php",
-			            data: $(form).serialize(),
-			            success: function() {
-			            	$('.form-group-message').show();
-			            	$('#error').hide();
-		                	$('#success').show();
-		                },
+	// if ($('.js-form').length) {
+	// 	$('.js-form').each(function(){
+	// 		$(this).validate({
+	// 			errorClass: 'error',
+	// 		    submitHandler: function(form){
+	// 	        	$.ajax({
+	// 		            type: "POST",
+	// 		            url:"mail.php",
+	// 		            data: $(form).serialize(),
+	// 		            success: function() {
+	// 		            	$('.form-group-message').show();
+	// 		            	$('#error').hide();
+	// 	                	$('#success').show();
+	// 	                },
 
-		                error: function(){
-		                	$('.form-group-message').show();
-		                	$('#success').hide();
-			                $('#error').show();
-			            }
-			        });
-			    }
-			});
+	// 	                error: function(){
+	// 	                	$('.form-group-message').show();
+	// 	                	$('#success').hide();
+	// 		                $('#error').show();
+	// 		            }
+	// 		        });
+	// 		    }
+	// 		});
+	// 	});
+	// }
+
+	// sendMailForm
+	$('#sendMailForm').submit(function (e) {
+		var data = {
+			'name': $('#name').val(),
+			'email': $('#email').val(),
+			'subject': $('#subject').val(),
+			'message': $('#message').val()
+		};
+
+		$.ajax({
+			url: 'mail.php',
+			data: data,
+			type: 'POST',
+			success: function (data) {
+				document.getElementById("sendMailForm").reset();
+				var $alertDiv = $(".mailResponse");
+				$alertDiv.show();
+				$alertDiv.find('.alert').removeClass('alert-danger alert-success');
+				$alertDiv.find('.mailResponseText').text("");
+				if(data.error) {
+					$alertDiv.find(".alert").addClass('alert-danger');
+					$alertDiv.find('.mailResponseText').text(data.message);
+				} else {
+					$alertDiv.find('.alert').addClass('alert-success');
+					$alertDiv.find('.mailResponseText').text(data.message);
+				}
+			}
 		});
-	}
-
-	
+		e.preventDefault();
+	});
 	
 
 
