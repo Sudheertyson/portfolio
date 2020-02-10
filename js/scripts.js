@@ -225,63 +225,32 @@
 
 
 
-	// if ($('.js-form').length) {
-	// 	$('.js-form').each(function(){
-	// 		$(this).validate({
-	// 			errorClass: 'error',
-	// 		    submitHandler: function(form){
-	// 	        	$.ajax({
-	// 		            type: "POST",
-	// 		            url:"mail.php",
-	// 		            data: $(form).serialize(),
-	// 		            success: function() {
-	// 		            	$('.form-group-message').show();
-	// 		            	$('#error').hide();
-	// 	                	$('#success').show();
-	// 	                },
+	if ($('.js-form').length) {
+		$('.js-form').each(function(){
+			$(this).validate({
+				errorClass: 'error',
+	  				submitHandler: function(form){
+		        	$.ajax({
+			            type: "POST",
+			            url:"mail.php",
+			            data: $(form).serialize(),
+			            success: function() {
+			            	$('.form-group-message').show();
+			            	$('#error').hide();
+		                	$('#success').show();
+		                },
 
-	// 	                error: function(){
-	// 	                	$('.form-group-message').show();
-	// 	                	$('#success').hide();
-	// 		                $('#error').show();
-	// 		            }
-	// 		        });
-	// 		    }
-	// 		});
-	// 	});
-	// }
-
-	$( '#sendMailForm' ).submit(function ( e ) {
-		var data = {
-			'name': $('#name').val(),
-			'email': $('#email').val(),
-			'contact': $('#contactNumber').val(),
-			'message' : $('#message').val()
-		};
-		// POST data to the php file
-		$.ajax({ 
-			url: 'mail.php', 
-			data: data,
-			type: 'POST',
-			success: function (data) {
-				// For Notification
-				document.getElementById("sendMailForm").reset();
-				var $alertDiv = $(".mailResponse");
-				$alertDiv.show();
-				$alertDiv.find('.alert').removeClass('alert-danger alert-success');
-				$alertDiv.find('.mailResponseText').text("");
-				if(data.error){
-					$alertDiv.find('.alert').addClass('alert-danger');
-					$alertDiv.find('.mailResponseText').text(data.message);
-				}else{
-					$alertDiv.find('.alert').addClass('alert-success');
-					$alertDiv.find('.mailResponseText').text(data.message);
-				}
-			}
+		                error: function(){
+		                	$('.form-group-message').show();
+	 	                	$('#success').hide();
+	 		                $('#error').show();
+	 		            }
+			        });
+	 		    }
+			});
 		});
-		e.preventDefault();
-	});
-	
+	 }
 
+	
 
 })(jQuery);
