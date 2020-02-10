@@ -412,31 +412,36 @@
                               </div>
                             </form> -->
                             <form name="sendMail" id="sendMailForm">
-                              <div class="form-group user-name col-sm-6">
+                              <div class="form-group user-name">
                                 <label for="name" class="sr-only">Name</label>
-                                <input type="text" class="form-control" required="" id="name" placeholder="FirstName">
+                                <!-- "id" for taking name -->
+                                <input type="text" class="form-control" required="" id="name" placeholder="First Name">
                               </div>
-                              <div class="form-group user-email col-sm-6">
+                              <div class="form-group user-email">
                                 <label for="email" class="sr-only">Email</label>
-                                <input type="email" class="form-control" required="" id="email" placeholder="Email Address"> 
+                                <!-- "id" for taking email -->
+                                <input type="email" class="form-control" required="" id="email" placeholder="Email Address">
                               </div>
-                              <div class="form-group user-subject col-sm-12">
-                                <label for="subject" class="sr-only">Subject</label>
-                                <input type="text" class="fomr-control" required="" id="subject" placeholder="Subject">
+                              <div class="form-group user-phone">
+                                <label for="contactNumber" class="sr-only">Contact Number</label>
+                                <!-- "id" for taking contact number -->
+                                <input type="text" class="form-control" required="" id="contactNumber" placeholder="Phone">
                               </div>
-                              <div class="form-group user-message col-sm-12">
+                              <div class="form-group user-message">
                                 <label for="message" class="sr-only">Message</label>
-                                <textarea class="form-control" required="" id="message" placeholder="Message"></textarea>
+                                <!-- "id" for taking message -->
+                                <textarea class="form-control" required="" id="message" placeholder="Write Message"></textarea>
                               </div>
-    
+                            <!-- Notifications for 'error' Or 'successfully'-->
                               <div class="col-md-12 mailResponse" style="display:none;">
                                 <div class="alert alert-dismissible" role="alert">
-                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">X</span></button>
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                                   <p class="mailResponseText"></p>
                                 </div>
                               </div>
-                              <button type="submit" class="btn btn-primary">Send Message <i class="fa fa-paper-plane"></i></button>
-                            </form>
+                            <!-- submit button -->
+                            <button type="submit" class="btn btn-primary">Send Message <i class="fa fa-paper-plane"></i></button>
+                          </form>
                           </div>
                         </div>
                        
