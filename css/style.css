@@ -1255,6 +1255,11 @@ a.brand:focus{
   margin: 0;
 }
 
+@media (max-width: 576px){
+  .display-2 {
+    font-size: 5.54rem;
+  }
+}
 
 .popup-youtube{
   display:inline-block;
